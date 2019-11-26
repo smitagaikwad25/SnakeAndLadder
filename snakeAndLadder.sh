@@ -8,7 +8,7 @@ position=0
 function  funnyGame()
 	{
 		local MAXPOSITION=100
-		while [ $position -le $MAXPOSITION ]
+		while [ $position -lt $MAXPOSITION ]
 		do
 			die=$((RANDOM%6+1))
 			random=$((RANDOM%3+1))
@@ -23,6 +23,16 @@ function  funnyGame()
 					position=$(( $position-$die )) 
 					echo "position after snake $position" ;;
 			esac
+			if [ $position -lt 0 ]
+			then
+				position=0
+			fi
+
+			if [ $position -gt $MAXPOSITION ]
+			then
+				position=$(( $position-$die ))
+			fi 
+
 		done
 
 	}
