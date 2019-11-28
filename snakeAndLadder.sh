@@ -18,28 +18,28 @@ declare -A dieStore2
 
 function  funnyGame()
 	{
-			die=$((RANDOM%6+1))
-			random=$((RANDOM%3+1))
-			position=$1
-			case $random in
-				1)
-					position=$position ;;
-				2)
-					position=$(( $position + $die )) ;;
-				3)
-					position=$(( $position - $die )) ;;
-			esac
-			if [ $position -lt 0 ]
-			then
-				position=0
-			fi
+		die=$((RANDOM%6+1))
+		random=$((RANDOM%3+1))
+		position=$1
+		case $random in
+			1)
+				position=$position ;;
+			2)
+				position=$(( $position + $die )) ;;
+			3)
+				position=$(( $position - $die )) ;;
+		esac
+		if [ $position -lt 0 ]
+		then
+			position=0
+		fi
 
-			if [ $position -gt $MAXPOSITION ]
-			then
-				position=$(( $position-$die ))
-			fi 
+		if [ $position -gt $MAXPOSITION ]
+		then
+			position=$(( $position-$die ))
+		fi 
 
-			echo $position
+		echo $position
 	}
 
 function choosePlayer()
